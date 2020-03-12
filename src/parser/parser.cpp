@@ -1,23 +1,34 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <string>
 #include <iostream>
+#include <fstream>
+#include <iostream>  
+
  
 int main(int argc, char *argv[]) 
 {
-    char* name_file = argv[0];
+    char* name_file = argv[1];
 
-    FILE* fp = std::fopen(name_file, "r");
+    std::ifstream myFile(name_file);
 
-    if(!fp) {
-	    std::perror("File opening failed");
-	    return EXIT_FAILURE;
-	}
+    while(myFile.good())
+    {
+        std::string line;
 
+        getline(myFile, line);
 
-    char *token = std::strtok(fp, " ");
-    while (token != '\n') {
-        std::cout << token << '\n';
-        //token = std::strtok(NULL, " ");
+        char* sArr = new char[line.length() + 1];
+
+        strcpy(sArr, line.c_str());
+
+        char* token = std::strtok(sArr, ";");
+
+        while (token != NULL) {
+            std::cout << token << '\n';
+            token = std::strtok(NULL, ";");
+        }
     }
+    myFile.close();
 }
