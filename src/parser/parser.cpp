@@ -1,28 +1,14 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <iostream>  
+#include "Parser.h" 
 
- 
-int main(int argc, char *argv[]) 
-{
-    char* name_file = argv[1];
+Parser::Parser(const char* name_file){
 
     std::ifstream myFile(name_file);
-
     while(myFile.good())
     {
         std::string line;
-
         getline(myFile, line);
-
         char* sArr = new char[line.length() + 1];
-
         strcpy(sArr, line.c_str());
-
         char* token = std::strtok(sArr, ";");
 
         while (token != NULL) {
