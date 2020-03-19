@@ -1,11 +1,11 @@
 #include "Parser.h"
 
-Parser::Parser(const char* name_file){
+void Parser::parse(const char* name_file){
 
-    int cpt = 1;
-    int nb_coord = 0;
-    int cpt_coord = 0;
-    int cpt_pts = 0;
+    int cpt = 1; //permet de savoir où on en est dans le fichier à parser
+    int nb_coord = 0;   // 2 pou 2D ou 3 pour 3D, le nombre de coordonnées par points
+    int cpt_coord = 0;  // permet de compter les coordonnées pour les attribuer facilement à chaque points
+    int cpt_pts = 0;    // permet de savoir le numéro du point traité
 
     std::ifstream myFile(name_file);
     while(myFile.good())
@@ -30,7 +30,6 @@ Parser::Parser(const char* name_file){
                     }
                     std::cout << "2D ou 3D: " << token << '\n';
                     std::cout << "Nb coord par point: " << nb_coord << '\n';
-
                 }
 
             }else{  //cpt>=3
@@ -42,10 +41,9 @@ Parser::Parser(const char* name_file){
                     std::cout << "Nombre de points: "<< token << '\n';
 
                 }else if(cpt%3==2){
-                    //std::cout << "Les coordonnées des points: " << token << '\n';
                     char* coord = std::strtok(sArr, " ");
                     while (coord != NULL){
-                        if(cpt_coord % nb_coord == 0){
+                        if(cpt_coord % nb_coord == 0){ // nouveau points toutes les 2 ou 3 coord selon si on est on 2D ou 3D
                             std::cout << "\nPoint n°" << cpt_pts+1 << ": ";
                             cpt_pts++;
                         }

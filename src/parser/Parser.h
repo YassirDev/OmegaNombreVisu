@@ -13,7 +13,7 @@
 class Parser{
 	
 public:
-	Parser(const char* name_file);
+	static void parse(const char* name_file);
 
 };
 
