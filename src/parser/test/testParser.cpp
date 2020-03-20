@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "parser.h"
+#include "../parser.h"
 
 /**
  * test basique de parse

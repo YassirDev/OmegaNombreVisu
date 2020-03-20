@@ -7,13 +7,12 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <iostream>
-
+#include <sstream>
 
 class Parser{
 	
 public:
-	static void parse(const char* name_file);
+	static bool parse(const char* name_file);
 
 };
 

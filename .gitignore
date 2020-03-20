@@ -1,2 +1,4 @@
 
 *.out
+
+src/parser/test/catch.hpp.gch
